@@ -18,6 +18,10 @@ if ($tipoUsuario == "Cliente") {
     include '../Class/Cliente.php';
     $objUsuario = new Cliente($nombre, $identificacion, $direccion, $correo, $contacto, $password);
 }
+if ($tipoUsuario == "Admin") {
+    include '../Class/Admin.php';
+    $objUsuario = new Admin($nombre, $identificacion, $direccion, $correo, $contacto, $password);
+}
 
 
 
