@@ -10,14 +10,26 @@ class DatosBasicos{
     private $password;
 
 
-    function __construct( $nombre, $identificacion , $direccion , $correo, $contacto, $password)
-    {
+    // function __construct( )
+    // {
+
+    // }
+
+    public function setData ($nombre, $identificacion , $direccion , $correo, $contacto){
         $this->nombre = $nombre;
         $this->identificacion = $identificacion;
         $this->direccion = $direccion;
         $this->correo = $correo;
         $this->contacto = $contacto;
+    }
+
+    public function setPassword($password){
         $this->password = $password;
+    }
+
+    public function verifyUser($correo,$password){
+        // Verificar Usuario en la Base de Datos, return true
+        return true;
     }
 
     public function getData(){

@@ -10,13 +10,13 @@
             <div class="container text-center">
                 <form method="POST" action="../actions/login.php">
                     <div class="mb-3 row  ">
-                        <label for="inputName" class="col-xs-4 col-form-label">Usuario</label>
+                        <label for="inputName" class="col-xs-4 col-form-label">Correo</label>
                         <div class="col-xs-8">
-                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="usuario" required>
+                            <input type="text" class="form-control" name="correo" id="correo" placeholder="correo" required>
                         </div>
                         <label for="inputName" class="col-xs-4 col-form-label">Constraseña</label>
                         <div class="col-xs-8">
-                            <input type="tel" class="form-control" name="contraseña" id="contraseña" placeholder="contraseña" required pattern="\d+">
+                            <input type="tel" class="form-control" name="password" id="password" placeholder="password" required">
                         </div>
                     </div>
                     <div class="row">

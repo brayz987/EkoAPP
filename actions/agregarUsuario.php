@@ -12,15 +12,18 @@ $password = $_POST['password'];
 
 if ($tipoUsuario == "Colaborador") {
     include '../Class/Colaborador.php';
-    $objUsuario = new Colaborador($nombre, $identificacion, $direccion, $correo, $contacto, $password);
+    $objUsuario = new Colaborador($nombre, $identificacion, $direccion, $correo, $contacto);
+    $objUsuario->setPassword($password);
 }
 if ($tipoUsuario == "Cliente") {
     include '../Class/Cliente.php';
-    $objUsuario = new Cliente($nombre, $identificacion, $direccion, $correo, $contacto, $password);
+    $objUsuario = new Cliente($nombre, $identificacion, $direccion, $correo, $contacto);
+    $objUsuario->setPassword($password);
 }
 if ($tipoUsuario == "Admin") {
     include '../Class/Admin.php';
-    $objUsuario = new Admin($nombre, $identificacion, $direccion, $correo, $contacto, $password);
+    $objUsuario = new Admin($nombre, $identificacion, $direccion, $correo, $contacto);
+    $objUsuario->setPassword($password);    
 }
 
 
