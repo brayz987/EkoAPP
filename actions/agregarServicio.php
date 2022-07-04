@@ -2,13 +2,14 @@
 
 include '../Class/Servicio.php';
 
+extract($_POST); // Create the variables  $fechainicio, $tipoResiduoGeneral, $peso, $direccion, $localidad 
 
-$direccion = $_POST['direccion'];
-$ciudad = $_POST['ciudad'];
-$tipoResiduo = $_POST['tipoResiduo'];
+$estado = 'Pendiente';
 
+$objServicio =  new Servicio($fechainicio,$direccion, $localidad ,$tipoResiduoGeneral, $peso, $estado );
+$objServicio->crearServicio();
 
-$objServicio = new Servicio($direccion, $ciudad, $tipoResiduo);
-var_dump($objServicio);
+echo("Se adiciono correctamente el usuario ".$objServicio->getId()." a la base de batos" );
+
 
 ?>

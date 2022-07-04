@@ -3,11 +3,8 @@ include 'DatosBasicos.php';
 
 class Cliente extends DatosBasicos {
 
-    private $tipoUsuario;
-
-    function __construct($nombre, $identificacion , $direccion , $correo, $contacto, $tipoUsuario = "0" ){
-        parent::setData($nombre, $identificacion , $direccion , $correo, $contacto);
-        $this->tipoUsuario = $tipoUsuario;
+    function __construct($nombre, $identificacion , $direccion , $correo, $contacto, $tipoUsuario = "1" ){
+        parent::setData($nombre, $identificacion , $direccion , $correo, $contacto, $tipoUsuario);
     }
 
     function setPassword($password)

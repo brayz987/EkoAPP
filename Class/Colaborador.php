@@ -3,11 +3,9 @@ include 'DatosBasicos.php';
 
 class Colaborador extends DatosBasicos {
 
-    private $tipoUsuario;
 
-    function __construct($nombre, $identificacion , $direccion , $correo, $contacto, $tipoUsuario = "1" ){
-        parent::setData($nombre, $identificacion , $direccion , $correo, $contacto);
-        $this->tipoUsuario = $tipoUsuario;
+    function __construct($nombre, $identificacion , $direccion , $correo, $contacto, $tipoUsuario = "2"){
+        parent::setData($nombre, $identificacion , $direccion , $correo, $contacto, $tipoUsuario);
     }
 
     public function setPassword($password)

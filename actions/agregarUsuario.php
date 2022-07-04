@@ -14,18 +14,25 @@ if ($tipoUsuario == "Colaborador") {
     include '../Class/Colaborador.php';
     $objUsuario = new Colaborador($nombre, $identificacion, $direccion, $correo, $contacto);
     $objUsuario->setPassword($password);
+    $objUsuario->crearCuenta();
 }
 if ($tipoUsuario == "Cliente") {
     include '../Class/Cliente.php';
     $objUsuario = new Cliente($nombre, $identificacion, $direccion, $correo, $contacto);
     $objUsuario->setPassword($password);
+    $objUsuario->crearCuenta();
 }
 if ($tipoUsuario == "Admin") {
     include '../Class/Admin.php';
     $objUsuario = new Admin($nombre, $identificacion, $direccion, $correo, $contacto);
-    $objUsuario->setPassword($password);    
+    $objUsuario->setPassword($password);
+    $objUsuario->crearCuenta();
 }
 
 
 
-var_dump($objUsuario);
+// var_dump($objUsuario);
+
+echo("Se adiciono correctamente el usuario ".$objUsuario->getNombre()." a la base de batos" );
+
+?>

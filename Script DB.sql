@@ -2,7 +2,6 @@ CREATE TABLE `Residuo` (
   `id_residuo` int PRIMARY KEY AUTO_INCREMENT,
   `peso` double,
   `cantidad` double,
-  `clasificacion` varchar(255),
   `id_servicio` int,
   `id_tipoResiduo` int
 );
@@ -27,6 +26,7 @@ CREATE TABLE `Usuario` (
   `direccion` varchar(255),
   `correo` varchar(255),
   `contacto` varchar(255),
+  `password` varchar(255),
   `id_tipoUsuario` int
 );
 
@@ -59,3 +59,8 @@ ALTER TABLE `ServicioXUsuario` ADD FOREIGN KEY (`identificacion_usuario`) REFERE
 ALTER TABLE `ServicioXUsuario` ADD FOREIGN KEY (`id_servicio`) REFERENCES `Servicio` (`id_servicio`);
 
 ALTER TABLE `Sedes` ADD FOREIGN KEY (`identificacion_usuario`) REFERENCES `Usuario` (`identificacion_usuario`);
+
+
+INSERT INTO `tipoUsuario` VALUES (1,'Cliente');
+INSERT INTO `tipoUsuario` VALUES (2,'Colaborador');
+INSERT INTO `tipoUsuario` VALUES (3,'Administrador');
