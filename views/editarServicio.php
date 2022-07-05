@@ -2,27 +2,72 @@
 
 include '../template/header.php';
 include_once '../Class/DataBase.php';
+include_once '../Class/Servicio.php';
 
 /// Consulta en la Base de Datos las localidades
 $db = new Database(); {
     $consultaLocalidad = 'SELECT * FROM localidad';
     $consultaLocalidad = $db->query($consultaLocalidad);
-
-
-    /// se ejecuta una consulta de la informacion del servicio y se guarda en la variable consultaServicio
-
-    $consultaServicio = $db->prepare('SELECT * FROM servicio WHERE id_servicio = :idservicio');
-    $consultaServicio->execute(array(
-        ':idservicio' => $_GET['id']
-    ));
-    $consultaServicio = $consultaServicio->fetch();
 }
-
 $db = null;
 
+session_start();
+$_SESSION['idServicio'] = $_GET['id'];
 
+$servicio = new Servicio();
+$servicio->setId($_GET['id']);
+$consultaServicio = $servicio->getInfo();
 
 ?>
+
+<!-- Formulario oculto para adicionar nuevo item en el inventario -->
+
+<div class="modal fade" id="addInventory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="../actions/agregarInventario.php?idServicio=<?php echo $_GET['id'] ?>" method="POST">
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Nombre:</label>
+                            <input type="text" class="form-control" name="nombre">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="message-text" class="col-form-label">Peso: </label>
+                            <div class=" mb-3 d-flex ">
+                                <input type="number" class="form-control" name="peso">
+                                <p class="m-0 ps-2 pt-1">Kilos</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="message-text" class="col-form-label">Cantidad: </label>
+                            <div class="mb-3  d-flex">
+
+                                <input type="number" class="form-control" name="cantidad">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
 
 
 <header class="container-fluid color-btn fixed-top">
@@ -98,8 +143,8 @@ $db = null;
                     <div class="col-9">
                     </div>
                     <div class="col-3 d-grid">
-                        <?php  if($_GET['view'] == 'edit'){ ?>
-                        <a type="submit" class="btn btn-warning" type="button">Editar</a><?php } ?>
+                        <?php if ($_GET['view'] == 'edit') { ?>
+                            <a type="submit" class="btn btn-warning color-btn" type="button">Editar</a><?php } ?>
                     </div>
                 </div>
             </form>
@@ -112,8 +157,9 @@ $db = null;
                     <h4 class="pt-2">Inventario</h4>
                 </div>
                 <div class="col-1 d-grid ">
-                <?php  if($_GET['view'] == 'edit'){ ?>
-                <a type="submit" class="btn btn-success" type="button"><i class="fa-solid fa-plus pt-2"></i></a><?php } ?>
+                    <?php if ($_GET['view'] == 'edit') { ?>
+                        <a type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addInventory" type="button"><i class="fa-solid fa-plus pt-2"></i></a><?php } ?>
+
                 </div>
             </div>
 
@@ -122,12 +168,12 @@ $db = null;
             <table class="table" id="tableInventory">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Peso</th>
                         <th>Cantidad</th>
-                        <?php  if($_GET['view'] == 'edit'){ ?>
-                        <th>Eliminar</th><?php } ?> 
+                        <?php if ($_GET['view'] == 'edit') { ?>
+                            <th>Eliminar</th><?php } ?>
                     </tr>
                 </thead>
             </table>
@@ -136,5 +182,10 @@ $db = null;
 </div>
 
 
-<script src="../scripts/datatableInventory.js"></script>
+<?php if($_GET['view'] == "edit" ){ ?>
+<script src="../scripts/datatableInventoryEdit.js"></script>
+<?php } ?>
+<?php if($_GET['view'] == "see" ){?>
+<script src="../scripts/datatableInventorySee.js"></script>
+<?php }?>
 <?php include '../template/footer.php' ?>

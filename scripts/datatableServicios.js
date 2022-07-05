@@ -6,7 +6,7 @@ $(document).ready(function () {
         autoWidth: true,
         searching: true,
         ajax: {
-            'url': '../actions/getDatatableServicios.php',
+            'url': '../actions/getServicios.php',
             dataSrc: 'data'
         },
         columns: [
@@ -30,12 +30,11 @@ $(document).ready(function () {
                 "previous":   "Anterior"
             },
         },
-        select: true,
         columnDefs: [
             {  targets: 6,
                 'data': 'id',
                render: function (data, type, row, meta) {
-                  return '<div class="btn-group" role="group" aria-label="Basic example"><a type="button"  href="../views/editarServicio.php?id='+data+'&view=see" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a><a type="button"  href="../views/editarServicio.php?id='+data+'&view=edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a><a type="button"  href="../actions/eliminarServicio.php?id='+data+'" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></a></div>';
+                  return '<div class="btn-group" role="group" aria-label="Basic example"><a type="button"  href="../views/editarServicio.php?id='+data+'&view=see" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a><a type="button"  href="../views/editarServicio.php?id='+data+'&view=edit" class="btn btn-warning color-btn"><i class="fa-solid fa-pen-to-square"></i></a><a type="button"  href="../actions/eliminarServicio.php?id='+data+'" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></a></div>';
                }
       
             }]
