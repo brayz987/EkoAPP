@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-9"></div>
         <div class="col-3 d-flex flex-row-reverse">
-            <a name="" id="" class="btn btn-success" href="servicio.php" role="button"><i class="fa-solid fa-plus"></i> Nuevo Servicio</a>
+            <a name="" id="" class="btn btn-success" href="agregarServicio.php" role="button"><i class="fa-solid fa-plus"></i> Nuevo Servicio</a>
         </div>
     </div>
     <!-- card-service -->
@@ -46,5 +46,5 @@
 
 </div>
 
-<script src="../scripts/datatable.js"></script>
+<script src="../scripts/datatableServicios.js"></script>
 <?php include '../template/footerOrange.php' ?>
