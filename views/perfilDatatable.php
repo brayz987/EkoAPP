@@ -4,7 +4,7 @@
 <header class="container-fluid color-btn fixed-top">
     <div class="row size-orange">
         <div class="col-11 text-light d-flex">
-            <a class="nav-link link-light pt-3" href="perfilUsuario.php"><i class="fa-solid fa-house fa-lg"></i></a>
+            <a class="nav-link link-light pt-3" href="perfilDatatable.php"><i class="fa-solid fa-house fa-lg"></i></a>
             <p class="pt-2 px-4 fs-4">Servicios</p>
         </div>
     </div>
@@ -27,24 +27,15 @@
                 <table class="table" id="tableServicios" >
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>fecha</th>
+                        <th>ID</th>
+                        <th>Fecha</th>
                         <th>Tipo Residuos</th>
                         <th>Direccion</th>
                         <th>Localidad</th>
                         <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>id</th>
-                        <th>fecha</th>
-                        <th>Tipo Residuos</th>
-                        <th>Direccion</th>
-                        <th>Localidad</th>
-                        <th>Estado</th>
-                    </tr>
-                </tfoot>
             </table>
                 </div>
             </div>
@@ -55,4 +46,5 @@
 
 </div>
 
+<script src="../scripts/datatable.js"></script>
 <?php include '../template/footerOrange.php' ?>

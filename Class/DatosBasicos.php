@@ -61,14 +61,6 @@ class DatosBasicos{
         return true;
     }
 
-    public function getData(){
-        echo("Nombre: {$this->nombre} </br>
-        Identificacion: {$this->identificacion}</br>
-        Direccion: {$this->direccion}</br>
-        Correo: {$this->correo}</br>
-        Contacto: {$this->contacto}");
-    }
-
     public function getNombre(){
         return $this->nombre;
     }

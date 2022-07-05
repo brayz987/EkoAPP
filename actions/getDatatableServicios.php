@@ -10,7 +10,9 @@ $db = new Database(); {
 
     $result = $consulta->fetchAll(PDO::FETCH_FUNC, fn($id, $fecha, $tiporesiduo, $direccion, $localidad, $estado) => ["id" => $id, "fecha" => $fecha, "tiporesiduo" => $tiporesiduo, "direccion" => $direccion, "localidad" => $localidad, "estado" => $estado]);
 
-    echo json_encode($result);
+    echo json_encode([
+        'data' => $result
+    ]);
 $db = null;
 }
 

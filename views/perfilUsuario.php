@@ -70,7 +70,7 @@
     </div>
 
 
-
+    
     <div class="pt-2">
         <div class="card">
             <h5 class="card-header"> Id: #123135546 </h5>
