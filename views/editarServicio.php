@@ -80,7 +80,7 @@ $consultaServicio = $servicio->getInfo();
 </header>
 
 
-<div class="container pt-7 col-sm-9">
+<div class="container pt-7 pb-5 col-sm-9">
     <div class="card">
         <div class="card-header">
             <h4 class="pt-2">Informacion General</h4>
