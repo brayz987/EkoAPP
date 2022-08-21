@@ -40,7 +40,7 @@ class Servicio
         $db = null;
     }
 
-    public function getAllInfo(){
+    public static function getAllInfo(){
         $db = new Database(); {
             $stm = 'SELECT servicio.id_servicio, servicio.fecha_servicio, tiposresiduoservicio.nombre, servicio.direccion, localidad.nombre, servicio.estado FROM servicio JOIN tiposresiduoservicio ON servicio.id_tiporesiduo = tiposresiduoservicio.id_tiporesiduo JOIN localidad ON servicio.localidad_id = localidad.localidad_id; ';
             $consulta = $db->query($stm);

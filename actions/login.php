@@ -16,6 +16,7 @@ if($user !== []){
     session_start();
     $_SESSION['user'] = $user['id'];
     $_SESSION['name'] = $user['nombre'];
+    $_SESSION['role'] = $user['role'];
     header('location: /ekoapp');
 }
 

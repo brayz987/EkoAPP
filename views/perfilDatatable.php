@@ -6,8 +6,19 @@ $_SESSION['view'] = "Servicios";
 if (!isset($_SESSION["user"])) {
     header("location: /ekoapp/");
     exit();
-}
+};
+
 include '../template/header.php';
+
+require_once '../Class/Servicio.php';
+
+if ($_SESSION['role'] == "Colaborador") {
+    $services = Servicio::getAllInfo();
+}
+if ($_SESSION['role'] == "Cliente") {
+    $services = Servicio::getServiceCustomer();
+}
+
 ?>
 
 
@@ -36,6 +47,24 @@ include '../template/header.php';
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php foreach ($services as $key) { ?>
+                                <tr>
+                                    <td><?php echo $key['id'] ?></td>
+                                    <td><?php echo $key['fecha'] ?></td>
+                                    <td><?php echo $key['tiporesiduo'] ?></td>
+                                    <td><?php echo $key['direccion'] ?></td>
+                                    <td><?php echo $key['localidad'] ?></td>
+                                    <td><?php echo $key['estado'] ?></td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a type="button" href="../views/editarServicio.php?id=<?php echo $key['id']; ?>&view=see" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+                                            <a type="button" href="../views/editarServicio.php?id=<?php echo $key['id']; ?>'&view=edit" class="btn btn-warning color-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a type="button" href="../actions/eliminarServicio.php?id=<?php echo $key['id']; ?>" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></a></div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
                     </table>
                 </div>
             </div>

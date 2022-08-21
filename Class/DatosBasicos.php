@@ -59,7 +59,7 @@ class DatosBasicos{
     public static function login($correo,$password){
         $db = new Database();
         {
-            $consulta = $db->prepare('SELECT id,nombre FROM '. self::TABLE .' WHERE correo = :correo AND password = :password');
+            $consulta = $db->prepare('SELECT id, nombre, tipousuario.description as role FROM '.self::TABLE.' INNER JOIN tipousuario ON usuario.id = tipousuario.id_tipoUsuario WHERE correo = :correo AND password = :password');
             $consulta->execute(array(
                 ':correo' => $correo,
                 ':password' => $password,
