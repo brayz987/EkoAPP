@@ -6,6 +6,6 @@
             </div>
         </div>
     </footer>
-
+    <script src="../scripts/changePassword.js"></script>
 </body>
 </html>

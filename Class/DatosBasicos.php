@@ -56,8 +56,47 @@ class DatosBasicos{
     }
 
     // Verify in the DB if the user Exist
-    public function verifyUser($correo,$password){
-        // Verificar Usuario en la Base de Datos, return true
+    public static function login($correo,$password){
+        $db = new Database();
+        {
+            $consulta = $db->prepare('SELECT id,nombre FROM '. self::TABLE .' WHERE correo = :correo AND password = :password');
+            $consulta->execute(array(
+                ':correo' => $correo,
+                ':password' => $password,
+
+            ));
+        }
+        $consultaUsuario = $consulta->fetch();
+        $db = null;
+        return $consultaUsuario;
+    }
+
+    public static function comparePassword($id, $password){
+        $db = new Database();
+        {
+            $consulta = $db->prepare('SELECT COUNT(*) FROM '. self::TABLE .' WHERE id = :id AND password = :password');
+            $consulta->execute(array(
+                ':id' => $id,
+                ':password' => $password,
+
+            ));
+        }
+        $consultaUsuario = $consulta->fetch();
+        $db = null;
+        return $consultaUsuario[0];
+    }
+
+    public static function changePassword($id, $password){
+        $db = new Database();
+        {
+            $consulta = $db->prepare('UPDATE '. self::TABLE .' SET  password = :password  WHERE id = :id ' );
+            $consulta->execute(array(
+                ':id' => $id,
+                ':password' => $password,
+
+            ));
+        }
+        $db = null;
         return true;
     }
 

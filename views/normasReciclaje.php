@@ -1,13 +1,16 @@
-<?php include '../template/header.php' ?>
+<?php
 
-<header class="container-fluid color-btn fixed-top">
-    <div class="row size-orange">
-        <div class="col-11 text-light d-flex">
-            <a class="nav-link link-light pt-3" href="perfilUsuario.php"><i class="fa-solid fa-house fa-lg"></i></a>
-            <p class="pt-2 px-4 fs-4">Normas de Reciclaje</p>
-        </div>
-    </div>
-</header>
+session_start();
+$_SESSION['view'] = "Normas de Reciclaje";
+
+
+if (!isset($_SESSION["user"])) {
+    header("location: /ekoapp/");
+    exit();
+}
+include '../template/header.php';
+?>
+
 
 <div class="container pt-7 col-sm-6">
     <div class="row">

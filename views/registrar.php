@@ -1,4 +1,4 @@
-<?php include '../template/header.php' ?>
+<?php include '../template/headerLogin.php' ?>
 
 
 <header class="container-fluid color-btn fixed-top">

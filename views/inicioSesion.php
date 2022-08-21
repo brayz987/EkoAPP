@@ -1,4 +1,4 @@
-<?php include '../template/header.php' ?>
+<?php include '../template/headerLogin.php' ?>
 
 
 <div class="container-sm pt-5 col-sm-5">
@@ -8,6 +8,7 @@
         </div>
         <div class="card-body">
             <div class="container text-center">
+
                 <form method="POST" action="../actions/login.php">
                     <div class="mb-3 row  ">
                         <label for="inputName" class="col-xs-4 col-form-label">Correo</label>
@@ -16,8 +17,15 @@
                         </div>
                         <label for="inputName" class="col-xs-4 col-form-label">Constraseña</label>
                         <div class="col-xs-8">
-                            <input type="tel" class="form-control" name="password" id="password" placeholder="password" required">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="password" required">
                         </div>
+                        <?php if (isset($_GET['message']) && $_GET['message'] == 'userBad') { ?>
+                            <div class="col d-grid pt-3">
+                                <div class="alert alert-danger" role="alert">
+                                    El usuario o la contraseña son incorrectas
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                     <div class="row">
                         <div class="col d-grid">

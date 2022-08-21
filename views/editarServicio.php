@@ -1,5 +1,14 @@
 <?php
 
+session_start();
+
+$_SESSION['view'] = "Editar Servicio";
+
+if (!isset($_SESSION["user"])) {
+    header("location: /ekoapp/");
+    exit();
+}
+
 include '../template/header.php';
 include_once '../Class/DataBase.php';
 include_once '../Class/Servicio.php';
@@ -11,7 +20,6 @@ $db = new Database(); {
 }
 $db = null;
 
-session_start();
 $_SESSION['idServicio'] = $_GET['id'];
 
 $servicio = new Servicio();
@@ -66,18 +74,6 @@ $consultaServicio = $servicio->getInfo();
 </div>
 
 
-
-
-
-
-<header class="container-fluid color-btn fixed-top">
-    <div class="row size-orange">
-        <div class="col-11 text-light d-flex">
-            <a class="nav-link link-light pt-3" href="perfilDatatable.php"><i class="fa-solid fa-house fa-lg"></i></a>
-            <p class="pt-2 px-4 fs-4">Editar Servicio</p>
-        </div>
-    </div>
-</header>
 
 
 <div class="container pt-7 pb-5 col-sm-9">

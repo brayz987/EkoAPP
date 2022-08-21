@@ -64,7 +64,7 @@ class Servicio
         $db = new Database(); {
             $consultaServicio = $db->prepare('SELECT * FROM servicio WHERE id_servicio = :idservicio');
             $consultaServicio->execute(array(
-                ':idservicio' => $this->id
+                ':idservicio' => $this->getId()
             ));
             $consultaServicio = $consultaServicio->fetch();
         }

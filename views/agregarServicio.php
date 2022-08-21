@@ -1,8 +1,14 @@
 <?php
+session_start();
 
+$_SESSION['view'] = "Nuevo Servicio";
+
+if (!isset($_SESSION["user"])) {
+    header("location: /ekoapp/");
+    exit();
+}
 include '../template/header.php';
 include_once '../Class/DataBase.php';
-
 /// Consulta en la Base de Datos las localidades
 $db = new Database(); {
     $consultaLocalidad = 'SELECT * FROM localidad';
@@ -15,15 +21,6 @@ $db = null;
 
 ?>
 
-
-<header class="container-fluid color-btn fixed-top">
-    <div class="row size-orange">
-        <div class="col-11 text-light d-flex">
-            <a class="nav-link link-light pt-3" href="perfilDatatable.php"><i class="fa-solid fa-house fa-lg"></i></a>
-            <p class="pt-2 px-4 fs-4">Nuevo Servicio</p>
-        </div>
-    </div>
-</header>
 
 
 <div class="container pt-7 col-sm-6">
@@ -40,14 +37,14 @@ $db = null;
                     <div class="col-3">
                         <label class="form-label mt-1">Fecha de Visita: </label>
                         <div class="d-flex  p-0 m-0">
-                            <input type="date" class="form-control" name="fechainicio">
+                            <input type="date" class="form-control" name="fechainicio" required >
                         </div>
                     </div>
                 </div>
                 <div class="row g-3">
                     <div class="col-9">
                         <label class="form-label mt-1">Tipo de Desechos en General: </label>
-                        <select class="form-select" name="tipoResiduoGeneral">
+                        <select class="form-select" name="tipoResiduoGeneral" required>
                             <option>Seleccionar...</option>
                             <option value="1">Residuos domésticos</option>
                             <option value="2">Residuos comerciales</option>
@@ -61,7 +58,7 @@ $db = null;
                     <div class="col-3">
                         <label class="form-label mt-1">Peso Aprox: </label>
                         <div class="d-flex  p-0 m-0">
-                            <input type="number" class="form-control" name="peso">
+                            <input type="number" class="form-control" name="peso" required>
                             <p class="m-0 ps-2 pt-1">Kilos</p>
                         </div>
                     </div>
@@ -70,11 +67,11 @@ $db = null;
                 <div class="row g-3">
                     <div class="col-9">
                         <label class="form-label mt-1">Direccion: </label>
-                        <input type="text" class="form-control" name="direccion">
+                        <input type="text" class="form-control" name="direccion" required>
                     </div>
                     <div class="col-3">
                         <label class="form-label mt-1">Localidad </label>
-                        <select class="form-select" name="localidad">
+                        <select class="form-select" name="localidad" required>
                             
                             <?php foreach ($consultaLocalidad as $e ) { ?>
                                 <option value="<?php echo $e['localidad_id']; ?>"><?php echo $e['nombre']; ?></option>
