@@ -83,7 +83,7 @@ var_dump($numero["COUNT(*)"]);
 <header class="container-fluid color-btn fixed-top">
     <div class="row size-orange">
         <div class="col-11 text-light d-flex">
-            <a class="nav-link link-light pt-3" href="perfilDatatable.php"><i class="fa-solid fa-house fa-lg"></i></a>
+            <a class="nav-link link-light pt-3" href="dashboard.php"><i class="fa-solid fa-house fa-lg"></i></a>
             <p class="pt-2 px-4 fs-4">Editar Servicio</p>
         </div>
     </div>

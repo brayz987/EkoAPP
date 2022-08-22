@@ -7,7 +7,7 @@ if(!isset($_SESSION["user"])){
 
 
 if(isset($_SESSION["user"])){
-    header("location: views/perfilDatatable.php");
+    header("location: views/dashboard.php");
 }
 
 ?>

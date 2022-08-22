@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 05, 2022 at 06:16 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-08-2022 a las 03:16:30
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ekoapp`
+-- Base de datos: `ekoapp`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `localidad`
+-- Estructura de tabla para la tabla `localidad`
 --
 
 CREATE TABLE `localidad` (
@@ -33,7 +33,7 @@ CREATE TABLE `localidad` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `localidad`
+-- Volcado de datos para la tabla `localidad`
 --
 
 INSERT INTO `localidad` (`localidad_id`, `nombre`) VALUES
@@ -61,7 +61,7 @@ INSERT INTO `localidad` (`localidad_id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `residuo`
+-- Estructura de tabla para la tabla `residuo`
 --
 
 CREATE TABLE `residuo` (
@@ -73,7 +73,7 @@ CREATE TABLE `residuo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `residuo`
+-- Volcado de datos para la tabla `residuo`
 --
 
 INSERT INTO `residuo` (`id_residuo`, `nombre`, `peso`, `cantidad`, `id_servicio`) VALUES
@@ -88,12 +88,16 @@ INSERT INTO `residuo` (`id_residuo`, `nombre`, `peso`, `cantidad`, `id_servicio`
 (9, 'Bolsa', 1, 20, 19),
 (10, 'Hola', 12231, 212, 19),
 (11, 'Prueba1', 12, 234, 23),
-(12, 'Comida', 2, 1, 22);
+(13, 'sdads', 21, 1, 27),
+(14, 'sadd', 12, 2, 19),
+(15, 'prueba', 12, 1, 19),
+(16, 'pruebas', 12, 123, 21),
+(17, 'das', 1, 2, 30);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sedes`
+-- Estructura de tabla para la tabla `sedes`
 --
 
 CREATE TABLE `sedes` (
@@ -107,7 +111,7 @@ CREATE TABLE `sedes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `servicio`
+-- Estructura de tabla para la tabla `servicio`
 --
 
 CREATE TABLE `servicio` (
@@ -118,38 +122,32 @@ CREATE TABLE `servicio` (
   `direccion` varchar(255) DEFAULT NULL,
   `id_tiporesiduo` int(11) NOT NULL,
   `estado` varchar(30) NOT NULL,
-  `localidad_id` int(11) NOT NULL
+  `localidad_id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `servicio`
+-- Volcado de datos para la tabla `servicio`
 --
 
-INSERT INTO `servicio` (`id_servicio`, `fecha_servicio`, `fecha_cierre`, `pesoTotal`, `direccion`, `id_tiporesiduo`, `estado`, `localidad_id`) VALUES
-(19, '2022-07-06', NULL, 12, 'Cr 4 # 59 - 84', 3, 'Pendiente', 14),
-(20, '2022-07-07', NULL, 30, 'Autopista Sur', 5, 'Pendiente', 5),
-(21, '2022-07-26', NULL, 16, 'Mi casa', 6, 'Pendiente', 2),
-(22, '2022-07-29', NULL, 50, 'La casa de otro', 2, 'Pendiente', 8),
-(23, '2022-07-05', NULL, 40, 'Nuevo servicio', 4, 'Pendiente', 11),
-(24, '2022-07-06', NULL, 50, 'Mi casa', 1, 'Pendiente', 14),
-(25, '2022-07-06', NULL, 50, 'Mi casa', 1, 'Pendiente', 14),
-(26, '0000-00-00', NULL, 50, 'Puente Peatonal', 5, 'Pendiente', 20);
+INSERT INTO `servicio` (`id_servicio`, `fecha_servicio`, `fecha_cierre`, `pesoTotal`, `direccion`, `id_tiporesiduo`, `estado`, `localidad_id`, `idUser`) VALUES
+(19, '2022-08-21', NULL, 2131, 'prueba edicion 2', 4, 'eliminado', 15, 2),
+(20, '2022-07-07', NULL, 30, 'Autopista Sur', 5, 'eliminado', 5, 2),
+(21, '2022-07-26', NULL, 16, 'Mi casa', 6, 'eliminado', 2, 2),
+(22, '2022-07-29', NULL, 50, 'La casa de otro', 2, 'eliminado', 8, 2),
+(23, '2022-07-05', NULL, 40, 'Nuevo servicio', 4, 'eliminado', 11, 2),
+(24, '2022-07-06', '2022-08-21', 50, 'Mi casa', 1, 'Cerrado', 14, 2),
+(25, '2022-07-06', NULL, 50, 'Mi casa', 1, 'Pendiente', 14, 2),
+(26, '0000-00-00', NULL, 50, 'Puente Peatonal', 5, 'Pendiente', 20, 2),
+(27, '2022-08-11', NULL, 32, 'dsadas', 1, 'Pendiente', 3, 2),
+(28, '2022-08-05', NULL, 12, 'prueba servicios cliente', 1, 'Pendiente', 5, 2),
+(29, '2022-08-11', NULL, 212, 'prueba user id', 3, 'Pendiente', 1, 2),
+(30, '2022-08-11', NULL, 212, 'prueba user id', 3, 'Pendiente', 1, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `servicioxusuario`
---
-
-CREATE TABLE `servicioxusuario` (
-  `identificacion_usuario` int(11) DEFAULT NULL,
-  `id_servicio` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tiposresiduoservicio`
+-- Estructura de tabla para la tabla `tiposresiduoservicio`
 --
 
 CREATE TABLE `tiposresiduoservicio` (
@@ -158,7 +156,7 @@ CREATE TABLE `tiposresiduoservicio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tiposresiduoservicio`
+-- Volcado de datos para la tabla `tiposresiduoservicio`
 --
 
 INSERT INTO `tiposresiduoservicio` (`id_tiporesiduo`, `nombre`) VALUES
@@ -172,7 +170,7 @@ INSERT INTO `tiposresiduoservicio` (`id_tiporesiduo`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipousuario`
+-- Estructura de tabla para la tabla `tipousuario`
 --
 
 CREATE TABLE `tipousuario` (
@@ -181,7 +179,7 @@ CREATE TABLE `tipousuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tipousuario`
+-- Volcado de datos para la tabla `tipousuario`
 --
 
 INSERT INTO `tipousuario` (`id_tipoUsuario`, `description`) VALUES
@@ -192,10 +190,11 @@ INSERT INTO `tipousuario` (`id_tipoUsuario`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
   `identificacion_usuario` int(11) NOT NULL,
   `nombre` varchar(255) DEFAULT NULL,
   `direccion` varchar(255) DEFAULT NULL,
@@ -206,144 +205,138 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`identificacion_usuario`, `nombre`, `direccion`, `correo`, `contacto`, `password`, `id_tipoUsuario`) VALUES
-(213245356, 'Richard', 'pasdasgber', 'richard@admin.com', '3002223445', 'k,mjynthbgrvfd', 2),
-(1003706375, 'Brayan Cardenas', 'Cr 4 # 59 - 84', 'brayz987@gmail.com', '3502649117', 'Admin', 2),
-(1233436465, 'Juanito Alcachofas', 'Cr 4 # 59 - 90', 'jachofas@admin.com', '3502649117', 'mntbtdv ', 1);
+INSERT INTO `usuario` (`id`, `identificacion_usuario`, `nombre`, `direccion`, `correo`, `contacto`, `password`, `id_tipoUsuario`) VALUES
+(1, 213245356, 'Richard', 'pasdasgber', 'richard@admin.com', '3002223445', 'k,mjynthbgrvfd', 2),
+(2, 1003706375, 'Brayan Cardenas', 'Cr 4 # 59 - 84', 'brayz987@gmail.com', '3502649117', 'NuevoPass', 2),
+(3, 1233436465, 'Juanito Alcachofas', 'Cr 4 # 59 - 90', 'jachofas@admin.com', '3502649117', 'mntbtdv ', 1);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `localidad`
+-- Indices de la tabla `localidad`
 --
 ALTER TABLE `localidad`
   ADD PRIMARY KEY (`localidad_id`);
 
 --
--- Indexes for table `residuo`
+-- Indices de la tabla `residuo`
 --
 ALTER TABLE `residuo`
   ADD PRIMARY KEY (`id_residuo`),
   ADD KEY `id_servicio` (`id_servicio`);
 
 --
--- Indexes for table `sedes`
+-- Indices de la tabla `sedes`
 --
 ALTER TABLE `sedes`
   ADD PRIMARY KEY (`id_sede`),
   ADD KEY `identificacion_usuario` (`identificacion_usuario`);
 
 --
--- Indexes for table `servicio`
+-- Indices de la tabla `servicio`
 --
 ALTER TABLE `servicio`
   ADD PRIMARY KEY (`id_servicio`),
   ADD KEY `tipoResiduoServicio` (`id_tiporesiduo`),
-  ADD KEY `localidad` (`localidad_id`);
+  ADD KEY `localidad` (`localidad_id`),
+  ADD KEY `userxservicio` (`idUser`);
 
 --
--- Indexes for table `servicioxusuario`
---
-ALTER TABLE `servicioxusuario`
-  ADD KEY `identificacion_usuario` (`identificacion_usuario`),
-  ADD KEY `id_servicio` (`id_servicio`);
-
---
--- Indexes for table `tiposresiduoservicio`
+-- Indices de la tabla `tiposresiduoservicio`
 --
 ALTER TABLE `tiposresiduoservicio`
   ADD PRIMARY KEY (`id_tiporesiduo`);
 
 --
--- Indexes for table `tipousuario`
+-- Indices de la tabla `tipousuario`
 --
 ALTER TABLE `tipousuario`
   ADD PRIMARY KEY (`id_tipoUsuario`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`identificacion_usuario`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id_tipoUsuario` (`id_tipoUsuario`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `localidad`
+-- AUTO_INCREMENT de la tabla `localidad`
 --
 ALTER TABLE `localidad`
   MODIFY `localidad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `residuo`
+-- AUTO_INCREMENT de la tabla `residuo`
 --
 ALTER TABLE `residuo`
-  MODIFY `id_residuo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_residuo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `sedes`
+-- AUTO_INCREMENT de la tabla `sedes`
 --
 ALTER TABLE `sedes`
   MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `servicio`
+-- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `tiposresiduoservicio`
+-- AUTO_INCREMENT de la tabla `tiposresiduoservicio`
 --
 ALTER TABLE `tiposresiduoservicio`
   MODIFY `id_tiporesiduo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `tipousuario`
+-- AUTO_INCREMENT de la tabla `tipousuario`
 --
 ALTER TABLE `tipousuario`
   MODIFY `id_tipoUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `residuo`
+-- Filtros para la tabla `residuo`
 --
 ALTER TABLE `residuo`
   ADD CONSTRAINT `residuo_ibfk_1` FOREIGN KEY (`id_servicio`) REFERENCES `servicio` (`id_servicio`);
 
 --
--- Constraints for table `sedes`
+-- Filtros para la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  ADD CONSTRAINT `sedes_ibfk_1` FOREIGN KEY (`identificacion_usuario`) REFERENCES `usuario` (`identificacion_usuario`);
+  ADD CONSTRAINT `sedesUsers` FOREIGN KEY (`identificacion_usuario`) REFERENCES `usuario` (`id`);
 
 --
--- Constraints for table `servicio`
+-- Filtros para la tabla `servicio`
 --
 ALTER TABLE `servicio`
   ADD CONSTRAINT `localidad` FOREIGN KEY (`localidad_id`) REFERENCES `localidad` (`localidad_id`),
-  ADD CONSTRAINT `tipoResiduoServicio` FOREIGN KEY (`id_tiporesiduo`) REFERENCES `tiposresiduoservicio` (`id_tiporesiduo`);
+  ADD CONSTRAINT `tipoResiduoServicio` FOREIGN KEY (`id_tiporesiduo`) REFERENCES `tiposresiduoservicio` (`id_tiporesiduo`),
+  ADD CONSTRAINT `userxservicio` FOREIGN KEY (`idUser`) REFERENCES `usuario` (`id`);
 
 --
--- Constraints for table `servicioxusuario`
---
-ALTER TABLE `servicioxusuario`
-  ADD CONSTRAINT `servicioxusuario_ibfk_1` FOREIGN KEY (`identificacion_usuario`) REFERENCES `usuario` (`identificacion_usuario`),
-  ADD CONSTRAINT `servicioxusuario_ibfk_2` FOREIGN KEY (`id_servicio`) REFERENCES `servicio` (`id_servicio`);
-
---
--- Constraints for table `usuario`
+-- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_tipoUsuario`) REFERENCES `tipousuario` (`id_tipoUsuario`);

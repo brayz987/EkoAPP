@@ -25,6 +25,7 @@ $_SESSION['idServicio'] = $_GET['id'];
 $servicio = new Servicio();
 $servicio->setId($_GET['id']);
 $consultaServicio = $servicio->getInfo();
+extract($consultaServicio); // Se crea una variable por cada dato del array
 
 ?>
 
@@ -82,25 +83,62 @@ $consultaServicio = $servicio->getInfo();
             <h4 class="pt-2">Informacion General</h4>
         </div>
         <div class="card-body">
-            <form action="../actions/agregarServicio.php" method="POST">
+            <form action="../actions/editarServicio.php" method="POST">
                 <div class="row g-3">
-                    <div class="col-9">
+
+                    <?php if (isset($_GET['alert']) && $_GET['alert'] == "editsuccess") { ?>
+                        <div class="col-12">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                                <strong>Editado Exitosamente</strong>
+                            </div>
+                        </div>
+                    <?php } ?>
+
+
+                    <?php if (isset($_GET['alert']) && $_GET['alert'] == "close") { ?>
+                        <div class="col-12">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                                <strong>Cerrado Exitosamente</strong>
+                            </div>
+                        </div>
+                    <?php } ?>
+
+
+                    <div class="col-4">
+                        <label class="form-label mt-1">Estado: </label>
+                        <div class="d-flex  p-0 m-0">
+                            <input type="text" class="form-control" name="estado" id="estado" disabled>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label mt-1">Fecha de Visita Programada: </label>
+                        <div class="d-flex  p-0 m-0">
+                            <input type="date" class="form-control" name="fechainicio" id="fechainicio">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label mt-1">Fecha de Cierre: </label>
+                        <div class="d-flex  p-0 m-0">
+                            <input type="date" class="form-control" name="fechacierre" id="fechacierre" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-12">
                         <label class="form-label mt-1">Tipo de Servcio: </label>
                         <select class="form-select" aria-label="Default select example" disabled>
                             <option selected>Recolecta de Residuos</option>
                         </select>
                     </div>
-                    <div class="col-3">
-                        <label class="form-label mt-1">Fecha de Visita: </label>
-                        <div class="d-flex  p-0 m-0">
-                            <input type="date" class="form-control" name="fechainicio">
-                        </div>
-                    </div>
                 </div>
                 <div class="row g-3">
                     <div class="col-9">
                         <label class="form-label mt-1">Tipo de Desechos en General: </label>
-                        <select class="form-select" name="tipoResiduoGeneral">
+                        <select class="form-select" name="tipoResiduoGeneral" id="tipoResiduoGeneral">
                             <option>Seleccionar...</option>
                             <option value="1">Residuos domésticos</option>
                             <option value="2">Residuos comerciales</option>
@@ -114,7 +152,7 @@ $consultaServicio = $servicio->getInfo();
                     <div class="col-3">
                         <label class="form-label mt-1">Peso Aprox: </label>
                         <div class="d-flex  p-0 m-0">
-                            <input type="number" class="form-control" name="peso">
+                            <input type="number" class="form-control" name="peso" id="peso">
                             <p class="m-0 ps-2 pt-1">Kilos</p>
                         </div>
                     </div>
@@ -123,11 +161,11 @@ $consultaServicio = $servicio->getInfo();
                 <div class="row g-3">
                     <div class="col-9">
                         <label class="form-label mt-1">Direccion: </label>
-                        <input type="text" class="form-control" name="direccion">
+                        <input type="text" class="form-control" name="direccion" id="direccion">
                     </div>
                     <div class="col-3">
                         <label class="form-label mt-1">Localidad </label>
-                        <select class="form-select" name="localidad">
+                        <select class="form-select" name="localidad" id="localidad">
 
                             <?php foreach ($consultaLocalidad as $e) { ?>
                                 <option value="<?php echo $e['localidad_id']; ?>"><?php echo $e['nombre']; ?></option>
@@ -137,10 +175,17 @@ $consultaServicio = $servicio->getInfo();
 
                     </div>
                     <div class="col-9">
+                        <input type="text" name="idServicio" hidden value='<?php echo ($_SESSION['idServicio']) ?>'>
+                        <input type="text" name="idUser" hidden value='<?php echo ($_SESSION['user']) ?>'>
                     </div>
                     <div class="col-3 d-grid">
                         <?php if ($_GET['view'] == 'edit') { ?>
-                            <a type="submit" class="btn btn-warning color-btn" type="button">Editar</a><?php } ?>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a type="button" href="../actions/cerrarServicio.php?id=<?php echo $_GET['id'] ?>" class="btn btn-warning color-btn" type="button">Cerrar Servicio</a>
+                                <button type="submit" class="btn btn-warning color-btn" type="button">Editar</button>
+                            </div>
+
+                        <?php } ?>
                     </div>
                 </div>
             </form>
@@ -178,10 +223,21 @@ $consultaServicio = $servicio->getInfo();
 </div>
 
 
-<?php if($_GET['view'] == "edit" ){ ?>
-<script src="../scripts/datatableInventoryEdit.js"></script>
+<?php if ($_GET['view'] == "edit") { ?>
+    <script src="../scripts/datatableInventoryEdit.js"></script>
 <?php } ?>
-<?php if($_GET['view'] == "see" ){?>
-<script src="../scripts/datatableInventorySee.js"></script>
-<?php }?>
+<?php if ($_GET['view'] == "see") { ?>
+    <script src="../scripts/datatableInventorySee.js"></script>
+<?php } ?>
+
+<script>
+    // Se ubican los datos del servicio a editar
+    $("#estado").val('<?php echo $estado ?>');
+    $("#fechainicio").val('<?php echo $fecha_servicio ?>');
+    $("#fechacierre").val('<?php echo $fecha_cierre ?>');
+    $("#tipoResiduoGeneral").val('<?php echo $id_tiporesiduo ?>');
+    $("#peso").val('<?php echo $pesoTotal ?>');
+    $("#direccion").val('<?php echo $direccion ?>');
+    $("#localidad").val('<?php echo $localidad_id ?>');
+</script>
 <?php include '../template/footer.php' ?>

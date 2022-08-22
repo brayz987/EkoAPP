@@ -47,7 +47,16 @@ class Residuo{
         return $consultaInventario;
     }
 
-
+    public static function deleteInv($id_residuo){
+        $db = new Database(); {
+            $consultaInventario = $db->prepare('DELETE FROM '.self::TABLE.' WHERE id_residuo  = :id_residuo');
+            $consultaInventario->execute(array(
+                ':id_residuo' => $id_residuo
+            ));
+        }
+        $db = null;
+        return true;
+    }
 
 }
 

@@ -81,7 +81,7 @@ $db = null;
 
                     </div>
                     <div class="col-9">
-                        <input type="text" value="<?php echo($_SESSION['user']) ?>" name="userId" disabled hidden>
+                        <input type="text" value="<?php echo($_SESSION['user']) ?>" name="userId" hidden>
                     </div>
                     <div class="col-3 d-grid">
                             <button type="submit" class="btn btn-success" type="button">Crear</button>  

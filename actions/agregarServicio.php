@@ -7,14 +7,15 @@ extract($_POST); // Create the variables  $fechainicio, $tipoResiduoGeneral, $pe
 $estado = 'Pendiente';
 
 $objServicio =  new Servicio();
-$objServicio->setData($fechainicio,$direccion, $localidad ,$tipoResiduoGeneral, $peso, $estado );
+$objServicio->setData($fechainicio,$direccion, $localidad ,$tipoResiduoGeneral, $peso, $estado, $userId );
 $objServicio->crearServicio();
+
 
 echo("Se adiciono correctamente el usuario ".$objServicio->getId()." a la base de batos" );
 
 
 
-header('Location: ../views/perfilDatatable.php');
+header('Location: ../views/dashboard.php');
 
 
 

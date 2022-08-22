@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 
     <script src="../scripts/jQuery.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/b-2.2.3/sp-2.0.2/sl-1.4.0/datatables.min.css" />
 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/b-2.2.3/sp-2.0.2/sl-1.4.0/datatables.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/3aaaae7e62.js" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
     <header class="container-fluid color-btn fixed-top">
         <div class="row size-orange">
             <div class="col-10 text-light d-flex">
-                <a class="nav-link link-light pt-3" href="perfilDatatable.php"><i class="fa-solid fa-house fa-lg"></i></a>
+                <a class="nav-link link-light pt-3" href="dashboard.php"><i class="fa-solid fa-house fa-lg"></i></a>
                 <p class="pt-2 px-4 fs-4"><?php echo ($_SESSION['view']); ?></p>
             </div>
             <div class="col-2 d-flex flex-row-reverse">
@@ -78,12 +78,12 @@
                             </div>
                         </div>
                         <div class="row d-none" id="alertPassword">
-                                <div class="col-12">
-                                    <div class="alert alert-danger m-0" role="alert">
-                                        <strong id="messagePassword"></strong>
-                                    </div>
+                            <div class="col-12">
+                                <div class="alert alert-danger m-0" role="alert">
+                                    <strong id="messagePassword"></strong>
                                 </div>
                             </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

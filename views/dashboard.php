@@ -12,12 +12,15 @@ include '../template/header.php';
 
 require_once '../Class/Servicio.php';
 
+var_dump($_SESSION);
+$services = array();
+
 if ($_SESSION['role'] == "Colaborador") {
     $services = Servicio::getAllInfo();
 }
-if ($_SESSION['role'] == "Cliente") {
-    $services = Servicio::getServiceCustomer();
-}
+// if ($_SESSION['role'] == "Cliente") {
+//     $services = Servicio::getServiceCustomer();
+// }
 
 ?>
 
@@ -34,8 +37,18 @@ if ($_SESSION['role'] == "Cliente") {
     <div class="pt-2">
         <div class="card">
             <div class="row">
+                <?php if(isset($_GET['alert']) && $_GET['alert'] == "editsuccess") { ?>
+                    <div class="col-12">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    
+                        <strong>Se ha eliminado el servicio con id <?php echo $_SESSION['deleteId'] ?>!</strong>
+                    </div>
+                    
+                </div>
+                <?php } ?>
                 <div class="col py-3 px-4">
-                    <table class="table" id="tableServicios">
+                    <table class="table display nowrap"  style="width:100%" id="tableServicios">
                         <thead>
                             <tr>
                                 <th>ID</th>
