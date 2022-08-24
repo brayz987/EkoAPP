@@ -18,9 +18,9 @@ $services = array();
 if ($_SESSION['role'] == "Colaborador") {
     $services = Servicio::getAllInfo();
 }
-// if ($_SESSION['role'] == "Cliente") {
-//     $services = Servicio::getServiceCustomer();
-// }
+if ($_SESSION['role'] == "Cliente") {
+    $services = Servicio::getServiceCustomer();
+}
 
 ?>
 

@@ -11,8 +11,8 @@ $objServicio->setData($fechainicio,$direccion, $localidad ,$tipoResiduoGeneral, 
 $objServicio->crearServicio();
 
 
-echo("Se adiciono correctamente el usuario ".$objServicio->getId()." a la base de batos" );
 
+// Envio de Mail
 
 
 header('Location: ../views/dashboard.php');
