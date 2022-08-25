@@ -12,5 +12,3 @@ if(isset($_SESSION["user"])){
 
 ?>
 
-holis
-
