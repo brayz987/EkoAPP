@@ -1,12 +1,7 @@
-envio de correos de avisa de registro popmac
-https://onlinecode.org/send-email-using-outlook-smtp-server-using-php/
 
 subida de imagen cargarlo 
-graficas
-agregar lista de desechos en inventario para hacer la grafica
 
-
+graficas CHART
 
 diseño -- cambio de colores - imagen de login
 sedes 
-php mailer
