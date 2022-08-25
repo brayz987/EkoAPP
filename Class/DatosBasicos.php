@@ -106,6 +106,19 @@ class DatosBasicos{
     public function getId(){
         return $this->id;
     }
+
+    public static function getCorreo($id){
+        $db = new Database();
+        {
+            $consulta = $db->prepare('SELECT correo,nombre FROM '. self::TABLE .' WHERE id = :id');
+            $consulta->execute(array(
+                ':id' => $id
+            ));
+        }
+        $consultaUsuario = $consulta->fetch();
+        $db = null;
+        return $consultaUsuario;
+    }
 }
 ?>
 

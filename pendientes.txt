@@ -1,6 +1,12 @@
 envio de correos de avisa de registro popmac
 https://onlinecode.org/send-email-using-outlook-smtp-server-using-php/
 
+Correo: ekoappPoo@gmail.com
+constraseña: desarollandoEkoApp
+
+desarollandoEkoApp*1000
+
+
 subida de imagen cargarlo 
 graficas
 agregar lista de desechos en inventario para hacer la grafica
