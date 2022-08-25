@@ -3,14 +3,14 @@
 include_once 'DataBase.php';
 
 class Residuo{
-    private $nombre;
+    private $id_listado_inventario;
     private $peso;
     private $cantidad;
     private $idServicio;
     const TABLE = 'residuo';
     
-    public function setData($nombre,$peso,$cantidad,$idServicio){
-        $this->nombre = $nombre;
+    public function setData($id_listado_inventario,$peso,$cantidad,$idServicio){
+        $this->id_listado_inventario = $id_listado_inventario;
         $this->peso = $peso;
         $this->cantidad = $cantidad;
         $this->idServicio = $idServicio;
@@ -19,9 +19,9 @@ class Residuo{
     public function create(){
         $db = new Database();
         {
-            $consulta = $db->prepare('INSERT INTO '.self::TABLE.' (nombre, peso, cantidad, id_servicio) VALUES (:nombre, :peso, :cantidad, :idServicio)');
+            $consulta = $db->prepare('INSERT INTO '.self::TABLE.' (id_listado_inventario, peso, cantidad, id_servicio) VALUES (:id_listado_inventario, :peso, :cantidad, :idServicio)');
             $consulta->execute(array(
-                ':nombre' => $this->nombre,
+                ':id_listado_inventario' => $this->id_listado_inventario,
                 ':peso' => $this->peso,
                 ':cantidad' => $this->cantidad,
                 ':idServicio' => $this->idServicio,
@@ -37,7 +37,7 @@ class Residuo{
 
     public function getInfo(){
         $db = new Database(); {
-            $consultaInventario = $db->prepare('SELECT * FROM '.self::TABLE.' WHERE id_servicio = :idservicio');
+            $consultaInventario = $db->prepare('SELECT * FROM `residuo` INNER JOIN listado_inventario ON residuo.id_listado_inventario = listado_inventario.Inventario_id WHERE id_servicio = :idservicio');
             $consultaInventario->execute(array(
                 ':idservicio' => $this->idServicio
             ));

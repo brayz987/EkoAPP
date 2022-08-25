@@ -20,6 +20,13 @@ $db = new Database(); {
 }
 $db = null;
 
+//Consulta la base de datos el invetario
+$db = new Database(); {
+    $consultaInventario = 'SELECT * FROM listado_inventario';
+    $consultaInventario = $db->query($consultaInventario);
+}
+$db = null;
+
 $_SESSION['idServicio'] = $_GET['id'];
 
 $servicio = new Servicio();
@@ -41,9 +48,13 @@ extract($consultaServicio); // Se crea una variable por cada dato del array
             <div class="modal-body">
                 <form action="../actions/agregarInventario.php?idServicio=<?php echo $_GET['id'] ?>" method="POST">
                     <div class="row">
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Nombre:</label>
-                            <input type="text" class="form-control" name="nombre">
+                        <div class="col d-flex">
+                            <label class="col-form-label">Lista Materiales:</label>
+                            <select class="form-select" name="listado_inventario">
+                                <?php foreach ($consultaInventario as $e) { ?>
+                                    <option value="<?php echo $e['Inventario_id']; ?>"><?php echo $e['nombre']; ?></option>
+                                <?php  } ?>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
