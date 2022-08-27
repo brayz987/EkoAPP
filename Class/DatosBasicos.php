@@ -177,7 +177,7 @@ class DatosBasicos
 
         $actualPhoto = self::getPhoto($this->id);
 
-        if ($actualPhoto['photo'] != "") {
+        if ($actualPhoto['photo'] != "" or $actualPhoto['photo'] != null) {
 
             $target_del = explode("/", $actualPhoto['photo']);
             $target_del = "../upload_files/" . end($target_del);

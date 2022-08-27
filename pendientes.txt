@@ -6,12 +6,10 @@ constraseña: desarollandoEkoApp
 desarollandoEkoApp*1000
 
 
-
-graficas
-agregar lista de desechos en inventario para hacer la grafica
+subida de imagen cargarlo (hecho)
+graficas (Se requiere la modificaciones de richard)
 
 
 
 diseño -- cambio de colores - imagen de login
 sedes 
-php mailer
