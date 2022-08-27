@@ -20,6 +20,16 @@
 
             </div>
             </div>
+            <?php if(isset($_GET['alert']) && $_GET['alert'] == "userCreated") { ?>
+                    <div class="col-12 mt-3">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    
+                        <strong>Se ha creado su usuario correctamente por favor inicie sesion</strong>
+                    </div>
+                    
+                </div>
+                <?php } ?>
         </div>
     </div>
 </div>

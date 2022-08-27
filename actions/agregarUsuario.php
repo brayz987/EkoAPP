@@ -29,10 +29,11 @@ if ($tipoUsuario == "Admin") {
     $objUsuario->crearCuenta();
 }
 
+$objUsuario->uploadPhoto($_FILES['photo']);
 
 
-// var_dump($objUsuario);
+header('Location: ../views/login.php?alert=userCreated');
 
-echo("Se adiciono correctamente el usuario ".$objUsuario->getNombre()." a la base de batos" );
+
 
 ?>

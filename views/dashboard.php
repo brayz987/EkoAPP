@@ -47,6 +47,19 @@ if ($_SESSION['role'] == "Cliente") {
                     
                 </div>
                 <?php } ?>
+
+                <?php if(isset($_GET['alert']) && $_GET['alert'] == "updateProfileSuccess") { ?>
+                    <div class="col-12">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    
+                        <strong>Se actualizado los datos de usuario correctamente</strong>
+                    </div>
+                    
+                </div>
+                <?php } ?>
+
+
                 <div class="col py-3 px-4">
                     <table class="table display nowrap"  style="width:100%" id="tableServicios">
                         <thead>
