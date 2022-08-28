@@ -101,7 +101,9 @@ $sedes = Sede::visualizar();
     <div class="row">
         <div class="col-9"></div>
         <div class="col-3 d-flex flex-row-reverse">
+        <?php if ($_SESSION['role'] == "Colaborador") { ?>
             <a name="" id="" class="btn btn-success" role="button" data-bs-toggle="modal" data-bs-target="#addSede"><i class="fa-solid fa-plus"></i> Adicionar Sede</a>
+        <?php } ?>
         </div>
     </div>
     <!-- card-service -->
