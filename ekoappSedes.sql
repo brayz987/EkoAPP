@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-08-2022 a las 23:52:45
+-- Tiempo de generación: 28-08-2022 a las 03:16:47
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -102,11 +102,19 @@ INSERT INTO `residuo` (`id_residuo`, `nombre`, `peso`, `cantidad`, `id_servicio`
 
 CREATE TABLE `sedes` (
   `id_sede` int(11) NOT NULL,
-  `direccion` varchar(255) DEFAULT NULL,
   `nombre` varchar(255) DEFAULT NULL,
+  `direccion` varchar(255) DEFAULT NULL,
   `servicio` varchar(255) DEFAULT NULL,
-  `identificacion_usuario` int(11) DEFAULT NULL
+  `localidad` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `sedes`
+--
+
+INSERT INTO `sedes` (`id_sede`, `nombre`, `direccion`, `servicio`, `localidad`, `usuario`) VALUES
+(11, 'sede prueba', 'sede prueba', 'sede prueba', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -136,7 +144,7 @@ INSERT INTO `servicio` (`id_servicio`, `fecha_servicio`, `fecha_cierre`, `pesoTo
 (21, '2022-07-26', NULL, 16, 'Mi casa', 6, 'eliminado', 2, 2),
 (22, '2022-07-29', NULL, 50, 'La casa de otro', 2, 'eliminado', 8, 2),
 (23, '2022-07-05', NULL, 40, 'Nuevo servicio', 4, 'eliminado', 11, 2),
-(24, '2022-07-06', '2022-08-21', 50, 'Mi casa', 1, 'Cerrado', 14, 2),
+(24, '2022-07-06', '2022-08-21', 50, 'Mi casa', 1, 'eliminado', 14, 2),
 (25, '2022-07-06', NULL, 50, 'Mi casa', 1, 'Pendiente', 14, 2),
 (26, '0000-00-00', NULL, 50, 'Puente Peatonal', 5, 'Pendiente', 20, 2),
 (27, '2022-08-11', NULL, 32, 'dsadas', 1, 'Pendiente', 3, 2),
@@ -279,7 +287,8 @@ ALTER TABLE `residuo`
 --
 ALTER TABLE `sedes`
   ADD PRIMARY KEY (`id_sede`),
-  ADD KEY `identificacion_usuario` (`identificacion_usuario`);
+  ADD KEY `identificacion_usuario` (`usuario`),
+  ADD KEY `sedesLocalidadId` (`localidad`);
 
 --
 -- Indices de la tabla `servicio`
@@ -329,7 +338,7 @@ ALTER TABLE `residuo`
 -- AUTO_INCREMENT de la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
@@ -369,7 +378,8 @@ ALTER TABLE `residuo`
 -- Filtros para la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  ADD CONSTRAINT `sedesUsers` FOREIGN KEY (`identificacion_usuario`) REFERENCES `usuario` (`id`);
+  ADD CONSTRAINT `sedesLocalidadId` FOREIGN KEY (`localidad`) REFERENCES `localidad` (`localidad_id`),
+  ADD CONSTRAINT `sedesUsers` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`);
 
 --
 -- Filtros para la tabla `servicio`
