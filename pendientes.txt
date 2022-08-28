@@ -12,4 +12,4 @@ graficas (Se requiere la modificaciones de richard)
 
 
 diseño -- cambio de colores - imagen de login
-sedes 
+sedes (hecho)
