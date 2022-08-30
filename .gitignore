@@ -1,0 +1,5 @@
+#ignora la carpeta de fotos
+upload_files/*
+
+# Exepto la foto por defecto
+!upload_files/default_profile.png

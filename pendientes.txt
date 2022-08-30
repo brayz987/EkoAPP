@@ -1,7 +1,25 @@
+<<<<<<< HEAD
 
 subida de imagen cargarlo 
+=======
+El correo se envia al crear un servicio al correo del usuario (Hecho)
+
+Correo: ekoappPoo@gmail.com
+constraseña: desarollandoEkoApp
+
+desarollandoEkoApp*1000
+
+
+subida de imagen cargarlo (hecho)
+graficas (Se requiere la modificaciones de richard)
+
+>>>>>>> 36d87c28b1c10bd056215079b29f0c23a0ca23f4
 
 graficas CHART
 
 diseño -- cambio de colores - imagen de login
+<<<<<<< HEAD
 sedes 
+=======
+sedes (hecho)
+>>>>>>> 36d87c28b1c10bd056215079b29f0c23a0ca23f4

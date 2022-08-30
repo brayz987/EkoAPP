@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-08-2022 a las 03:16:30
+-- Tiempo de generación: 28-08-2022 a las 03:16:47
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -102,11 +102,19 @@ INSERT INTO `residuo` (`id_residuo`, `nombre`, `peso`, `cantidad`, `id_servicio`
 
 CREATE TABLE `sedes` (
   `id_sede` int(11) NOT NULL,
-  `direccion` varchar(255) DEFAULT NULL,
   `nombre` varchar(255) DEFAULT NULL,
+  `direccion` varchar(255) DEFAULT NULL,
   `servicio` varchar(255) DEFAULT NULL,
-  `identificacion_usuario` int(11) DEFAULT NULL
+  `localidad` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `sedes`
+--
+
+INSERT INTO `sedes` (`id_sede`, `nombre`, `direccion`, `servicio`, `localidad`, `usuario`) VALUES
+(11, 'sede prueba', 'sede prueba', 'sede prueba', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -136,13 +144,56 @@ INSERT INTO `servicio` (`id_servicio`, `fecha_servicio`, `fecha_cierre`, `pesoTo
 (21, '2022-07-26', NULL, 16, 'Mi casa', 6, 'eliminado', 2, 2),
 (22, '2022-07-29', NULL, 50, 'La casa de otro', 2, 'eliminado', 8, 2),
 (23, '2022-07-05', NULL, 40, 'Nuevo servicio', 4, 'eliminado', 11, 2),
-(24, '2022-07-06', '2022-08-21', 50, 'Mi casa', 1, 'Cerrado', 14, 2),
+(24, '2022-07-06', '2022-08-21', 50, 'Mi casa', 1, 'eliminado', 14, 2),
 (25, '2022-07-06', NULL, 50, 'Mi casa', 1, 'Pendiente', 14, 2),
 (26, '0000-00-00', NULL, 50, 'Puente Peatonal', 5, 'Pendiente', 20, 2),
 (27, '2022-08-11', NULL, 32, 'dsadas', 1, 'Pendiente', 3, 2),
 (28, '2022-08-05', NULL, 12, 'prueba servicios cliente', 1, 'Pendiente', 5, 2),
 (29, '2022-08-11', NULL, 212, 'prueba user id', 3, 'Pendiente', 1, 2),
-(30, '2022-08-11', NULL, 212, 'prueba user id', 3, 'Pendiente', 1, 2);
+(30, '2022-08-11', NULL, 212, 'prueba user id', 3, 'Pendiente', 1, 2),
+(31, '2022-08-25', NULL, 50, 'sadasdds', 1, 'Pendiente', 7, 1),
+(32, '2022-08-25', NULL, 50, 'sadasdds', 1, 'Pendiente', 7, 1),
+(33, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(34, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(35, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(36, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(37, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(38, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(39, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(40, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(41, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(42, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(43, '2022-08-25', NULL, 12, 'eqweqwewe', 2, 'Pendiente', 2, 1),
+(44, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(45, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(46, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(47, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(48, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(49, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(50, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(51, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(52, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(53, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(54, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(55, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(56, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(57, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(58, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(59, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(60, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(61, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(62, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(63, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(64, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(65, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(66, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(67, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(68, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(69, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(70, '2022-08-26', NULL, 45, 'dasddsd', 4, 'Pendiente', 11, 2),
+(71, '2022-08-25', NULL, 23, 'prueba correo', 2, 'Pendiente', 9, 2),
+(72, '2022-08-25', NULL, 23, 'prueba correo', 2, 'Pendiente', 9, 2),
+(73, '2022-08-25', NULL, 12, 'prueba mail', 3, 'Pendiente', 10, 2);
 
 -- --------------------------------------------------------
 
@@ -201,17 +252,18 @@ CREATE TABLE `usuario` (
   `correo` varchar(255) DEFAULT NULL,
   `contacto` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `id_tipoUsuario` int(11) DEFAULT NULL
+  `id_tipoUsuario` int(11) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `identificacion_usuario`, `nombre`, `direccion`, `correo`, `contacto`, `password`, `id_tipoUsuario`) VALUES
-(1, 213245356, 'Richard', 'pasdasgber', 'richard@admin.com', '3002223445', 'k,mjynthbgrvfd', 2),
-(2, 1003706375, 'Brayan Cardenas', 'Cr 4 # 59 - 84', 'brayz987@gmail.com', '3502649117', 'NuevoPass', 2),
-(3, 1233436465, 'Juanito Alcachofas', 'Cr 4 # 59 - 90', 'jachofas@admin.com', '3502649117', 'mntbtdv ', 1);
+INSERT INTO `usuario` (`id`, `identificacion_usuario`, `nombre`, `direccion`, `correo`, `contacto`, `password`, `id_tipoUsuario`, `photo`) VALUES
+(1, 213245356, 'Richard', 'pasdasgber', 'richard@admin.com', '3002223445', 'k,mjynthbgrvfd', 2, ''),
+(2, 1003706375, 'Brayan Cardenas', 'Cr 4 # 59 - 84', 'brayz987@gmail.com', '3502649117', 'NuevoPass', 2, '/upload_files/1661635549heightmap(3).png'),
+(3, 1233436465, 'Juanito Alcachofas', 'Cr 4 # 59 - 90', 'jachofas@admin.com', '3502649117', 'mntbtdv ', 1, '');
 
 --
 -- Índices para tablas volcadas
@@ -235,7 +287,8 @@ ALTER TABLE `residuo`
 --
 ALTER TABLE `sedes`
   ADD PRIMARY KEY (`id_sede`),
-  ADD KEY `identificacion_usuario` (`identificacion_usuario`);
+  ADD KEY `identificacion_usuario` (`usuario`),
+  ADD KEY `sedesLocalidadId` (`localidad`);
 
 --
 -- Indices de la tabla `servicio`
@@ -285,13 +338,13 @@ ALTER TABLE `residuo`
 -- AUTO_INCREMENT de la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de la tabla `tiposresiduoservicio`
@@ -309,7 +362,7 @@ ALTER TABLE `tipousuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
@@ -325,7 +378,8 @@ ALTER TABLE `residuo`
 -- Filtros para la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  ADD CONSTRAINT `sedesUsers` FOREIGN KEY (`identificacion_usuario`) REFERENCES `usuario` (`id`);
+  ADD CONSTRAINT `sedesLocalidadId` FOREIGN KEY (`localidad`) REFERENCES `localidad` (`localidad_id`),
+  ADD CONSTRAINT `sedesUsers` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`);
 
 --
 -- Filtros para la tabla `servicio`

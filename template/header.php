@@ -1,3 +1,11 @@
+<?php
+
+include_once '../Class/DatosBasicos.php';
+
+$profile = DatosBasicos::getProfile($_SESSION['user']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +40,8 @@
                 <div class="dropdown pt-2">
                     <a class="nav-link dropdown-toggle link-light px-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Bienvenido, <?php echo ($_SESSION['name']); ?></a>
                     <ul class="dropdown-menu dropdown-menu-end ">
-                        <li><a class="dropdown-item active" href="" data-bs-toggle="modal" data-bs-target="#changePassword">Cambiar Constraseña</a></li>
+                        <li><a class="dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#profile" aria-controls="offcanvasRight">Perfil</a></li>
+                        <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#changePassword">Cambiar Constraseña</a></li>
                         <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#logout">Cerrar Sesion</a></li>
                     </ul>
                 </div>
@@ -114,4 +123,53 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+
+    <!-- Change Password Modal -->
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="profile" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Perfil</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form action="../actions/actualizarPerfil.php" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <label for="" class="form-label">Foto de Perfil</label>
+                    <div class="col mb-3">
+                        <img src="<?php $profile['photo'] = ($profile['photo'] != "") ?  ".." . $profile['photo']  : "../upload_files/default_profile.png";
+                                    echo $profile['photo']; ?>" class="img-fluid rounded img-thumbnail img-size" alt="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Cambiar Foto</label>
+                        <input type="file" class="form-control" name="photo" id="photo" accept="image/png, image/gif, image/jpeg">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" id="" placeholder="" value="<?php echo $profile['nombre'] ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" name="direccion" id="" placeholder="" value="<?php echo $profile['direccion'] ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Correo</label>
+                        <input type="text" class="form-control" name="correo" id="" placeholder="" value="<?php echo $profile['correo'] ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Numero de Contacto</label>
+                        <input type="text" class="form-control" name="contacto" id="" placeholder="" value="<?php echo $profile['contacto'] ?>">
+                    </div>
+                    <div class="gap-2 d-flex flex-row-reverse ">
+                        <input type="text" class="form-control" hidden name="id" id="" placeholder="" value="<?php echo $_SESSION['user'] ?>">
+                        <button type="submit" name="" id="" class="btn btn-warning">Actualizar</button>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
     </div>

@@ -4,7 +4,7 @@
 <header class="container-fluid color-btn fixed-top">
     <div class="row size-orange">
         <div class="col-11 text-light d-flex">
-              <a class="nav-link link-light pt-3" href="../"><i class="fa-solid fa-x fa-lg"></i></i></a>
+            <a class="nav-link link-light pt-3" href="../"><i class="fa-solid fa-x fa-lg"></i></i></a>
             <p class="pt-2 px-4 fs-4">Nuevo Usuario</p>
         </div>
     </div>
@@ -16,7 +16,7 @@
     <div class="card text-start">
         <div class="card-body">
             <div class="container">
-                <form method="POST" action="../actions/agregarUsuario.php">
+                <form method="POST" action="../actions/agregarUsuario.php" enctype="multipart/form-data">
                     <div class="mb-3 row">
                         <label for="inputName" class="col-xs-4 col-form-label">Nombre</label>
                         <div class="col-xs-8">
@@ -46,8 +46,12 @@
                             </select>
                         </div>
                         <label for="inputName" class="col-xs-4 col-form-label">Contraseña</label>
-                        <div class="col-xs-8">
+                        <div class="col-xs-8 mb-3">
                             <input type="password" class="form-control" name="password" id="password" placeholder="password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Foto de Perfil</label>
+                            <input type="file" class="form-control" name="photo" id="photo" accept="image/png, image/gif, image/jpeg" required>
                         </div>
                     </div>
                     <div class="row">
