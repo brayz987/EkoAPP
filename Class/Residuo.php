@@ -41,7 +41,7 @@ class Residuo{
             $consultaInventario->execute(array(
                 ':idservicio' => $this->idServicio
             ));
-            $consultaInventario = $consultaInventario->fetchAll();
+            $consultaInventario = $consultaInventario->fetchAll(PDO::FETCH_OBJ);
         }
         $db = null;
         return $consultaInventario;

@@ -88,7 +88,9 @@ if ($_SESSION['role'] == "Cliente") {
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a type="button" href="../views/editarServicio.php?id=<?php echo $key['id']; ?>&view=see" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
-                                            <a type="button" href="../views/editarServicio.php?id=<?php echo $key['id']; ?>'&view=edit" class="btn btn-warning color-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <?php if($key['estado'] != "Cerrado") { ?>
+                                                <a type="button" href="../views/editarServicio.php?id=<?php echo $key['id']; ?>'&view=edit" class="btn btn-warning color-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <?php } ?>
                                             <a type="button" href="../actions/eliminarServicio.php?id=<?php echo $key['id']; ?>" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></a>
                                         </div>
                                     </td>

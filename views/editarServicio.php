@@ -12,6 +12,7 @@ if (!isset($_SESSION["user"])) {
 include '../template/header.php';
 include_once '../Class/DataBase.php';
 include_once '../Class/Servicio.php';
+include_once '../Class/Residuo.php';
 
 /// Consulta en la Base de Datos las localidades
 $db = new Database(); {
@@ -33,6 +34,15 @@ $servicio = new Servicio();
 $servicio->setId($_GET['id']);
 $consultaServicio = $servicio->getInfo();
 extract($consultaServicio); // Se crea una variable por cada dato del array
+
+// Consultar Inventario 
+
+
+
+$objResiduo = new Residuo();
+$objResiduo->setIdServicio($_SESSION['idServicio']);
+$inventario = $objResiduo->getInfo();
+var_dump($inventario);
 
 ?>
 
@@ -192,7 +202,9 @@ extract($consultaServicio); // Se crea una variable por cada dato del array
                     <div class="col-3 d-grid">
                         <?php if ($_GET['view'] == 'edit') { ?>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a type="button" href="../actions/cerrarServicio.php?id=<?php echo $_GET['id'] ?>" class="btn btn-warning color-btn" type="button">Cerrar Servicio</a>
+                                <?php if ($_SESSION['role'] == "Colaborador") { ?>
+                                    <a type="button" href="../actions/cerrarServicio.php?id=<?php echo $_GET['id'] ?>" class="btn btn-warning color-btn" type="button">Cerrar Servicio</a>
+                                <?php } ?>
                                 <button type="submit" class="btn btn-warning color-btn" type="button">Editar</button>
                             </div>
 
@@ -209,7 +221,7 @@ extract($consultaServicio); // Se crea una variable por cada dato del array
                     <h4 class="pt-2">Inventario</h4>
                 </div>
                 <div class="col-1 d-grid ">
-                    <?php if ($_GET['view'] == 'edit') { ?>
+                    <?php if ($_GET['view'] == 'edit' && $_SESSION['role'] == "Colaborador") { ?>
                         <a type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addInventory" type="button"><i class="fa-solid fa-plus pt-2"></i></a><?php } ?>
 
                 </div>
@@ -224,10 +236,25 @@ extract($consultaServicio); // Se crea una variable por cada dato del array
                         <th>Nombre</th>
                         <th>Peso</th>
                         <th>Cantidad</th>
-                        <?php if ($_GET['view'] == 'edit') { ?>
+                        <?php if ($_GET['view'] == 'edit' && $_SESSION['role'] == "Colaborador") { ?>
                             <th>Eliminar</th><?php } ?>
                     </tr>
                 </thead>
+                <tbody>
+                    <?php foreach ($inventario as $key) { ?>
+                        <tr>
+                            <td><?php echo $key->id_residuo ?></td>
+                            <td><?php echo $key->nombre ?></td>
+                            <td><?php echo $key->peso ?></td>
+                            <td><?php echo $key->cantidad ?></td>
+                            <?php if ($_GET['view'] == 'edit' && $_SESSION['role'] == "Colaborador") { ?>
+                                <th>
+                                    <div class="btn-group" role="group" aria-label="Basic example"><a type="button" href="../actions/deleteInventario.php?id=<?php echo $key->id_residuo ?>" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                </th>
+                            <?php } ?>
+                        </tr>
+                    <?php } ?>
+                </tbody>
             </table>
         </div>
     </div>
