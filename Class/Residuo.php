@@ -58,6 +58,18 @@ class Residuo{
         return true;
     }
 
+
+    public static function getInvetorySum($idServicio){
+        $db = new Database(); {
+            $consultaInventario = $db->prepare('SELECT listado_inventario.nombre, SUM(cantidad) as cantidad FROM residuo INNER JOIN listado_inventario ON listado_inventario.Inventario_id = residuo.id_listado_inventario  WHERE id_servicio = :idServicio GROUP BY id_listado_inventario');
+            $consultaInventario->execute(array(
+                ':idServicio' => $idServicio
+            ));
+            $consultaInventario = $consultaInventario->fetchAll(PDO::FETCH_OBJ);
+        }
+        $db = null;
+        return $consultaInventario;
+    }
 }
 
 ?>

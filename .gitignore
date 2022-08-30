@@ -3,3 +3,5 @@ upload_files/*
 
 # Exepto la foto por defecto
 !upload_files/default_profile.png
+!upload_files/decreto_456_de_2010.pdf
+!upload_files/Norma.png

@@ -42,7 +42,7 @@ extract($consultaServicio); // Se crea una variable por cada dato del array
 $objResiduo = new Residuo();
 $objResiduo->setIdServicio($_SESSION['idServicio']);
 $inventario = $objResiduo->getInfo();
-var_dump($inventario);
+
 
 ?>
 
@@ -258,15 +258,25 @@ var_dump($inventario);
             </table>
         </div>
     </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-11">
+                    <h4 class="pt-2">Grafica Sumatoria de Inventario</h4>
+                </div>
+            </div>
+        </div>
+        <div class="card-body  d-flex justify-content-center">
+            <div class="grafica-size">
+                <canvas id="grafica"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<?php if ($_GET['view'] == "edit") { ?>
-    <script src="../scripts/datatableInventoryEdit.js"></script>
-<?php } ?>
-<?php if ($_GET['view'] == "see") { ?>
-    <script src="../scripts/datatableInventorySee.js"></script>
-<?php } ?>
+<script src="../scripts/datatableInventory.js"></script>
+<?php include '../views/grafica.php' ?>
 
 <script>
     // Se ubican los datos del servicio a editar
@@ -278,4 +288,6 @@ var_dump($inventario);
     $("#direccion").val('<?php echo $direccion ?>');
     $("#localidad").val('<?php echo $localidad_id ?>');
 </script>
+
+
 <?php include '../template/footer.php' ?>
